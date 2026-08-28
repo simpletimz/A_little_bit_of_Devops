@@ -54,3 +54,6 @@ Every later project in this series automates one or more of these steps. Doing t
 - Automate this entire flow via CI/CD (Project 3) rather than manual SSH + copy.
 - Use `rsync` instead of `cp` for any future manual syncs, since it only transfers changed files.
 - Add a firewall (`ufw`) policy explicitly allowing only required ports (80/443/22), rather than relying on defaults.
+
+## Screenshot
+![Deployed site](assets/deployed-site.png)
