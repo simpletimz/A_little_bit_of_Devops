@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t portfolio-site:${{ github.sha }} project-2-docker-compose/
+        run: docker build -t portfolio-site:${{ github.sha }} .
 
       - name: Scan image with Trivy
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: portfolio-site:${{ github.sha }}
           format: table
@@ -37,16 +37,3 @@ jobs:
           docker tag portfolio-site:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-site:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-site:${{ github.sha }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-site:latest
-
-      - name: Deploy to EC2
-        if: success()
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ec2-user
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-site:latest
-            docker stop portfolio-container || true
-            docker rm portfolio-container || true
-            docker run -d --name portfolio-container -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-site:latest
