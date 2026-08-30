@@ -1,0 +1,11 @@
+# Terraform
+project-4-terraform-aws/terraform.tfvars
+project-4-terraform-aws/.terraform/
+project-4-terraform-aws/*.tfstate
+project-4-terraform-aws/*.tfstate.backup
+project-4-terraform-aws/.terraform.lock.hcl
+
+# SSH keys (just in case any get placed in-repo by mistake)
+*.pem
+id_ed25519
+id_ed25519.pub
