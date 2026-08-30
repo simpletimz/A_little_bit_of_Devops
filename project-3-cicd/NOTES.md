@@ -47,7 +47,7 @@ See [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) at the rep
 - PAT was missing the `workflow` scope, which is required specifically to modify files in `.github/workflows/` → regenerated the token with `repo` + `workflow` scopes
 - Divergent local/remote history after editing `.github` on GitHub's web UI → resolved with `git config pull.rebase false`, `git pull origin main`, then manually resolving a rename/delete merge conflict
 
-**Pinned Trivy action version stopped existing** (`0.24.0` not found). The action's maintainers migrated all tags to a `v`-prefixed scheme after a supply-chain security incident affecting the project. Updated my pin to `v0.36.0` to match.
+**Pinned Trivy action version stopped existing** (`0.24.0` not found). The action's maintainers migrated all tags to a `v`-prefixed scheme after a supply-chain security incident affecting the project. Updated my pin to `v0.35.0` to match.
 
 **Trivy found 189 vulnerabilities (42 CRITICAL) on the first real scan.** Root cause: the pinned base image, `nginx:1.18.0`, runs on Debian 10 — a release that had reached end-of-life and stopped receiving security patches. Fixed in two stages:
 1. Switched the base image to `nginx:1.27-alpine` → down to 35 vulnerabilities (2 CRITICAL)
