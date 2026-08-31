@@ -4,6 +4,8 @@ project-4-terraform-aws/.terraform/
 project-4-terraform-aws/*.tfstate
 project-4-terraform-aws/*.tfstate.backup
 project-4-terraform-aws/.terraform.lock.hcl
+project-4-terraform-aws/tfplan
+project-4-terraform-aws/aws ssm send-command
 
 # SSH keys (just in case any get placed in-repo by mistake)
 *.pem
