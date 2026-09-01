@@ -1,4 +1,4 @@
-# DevOps / Cloud Engineering Portfolio
+# DevOps Simple Site Manual to Terraform
 
 One simple site, taken from a manual deploy through containerization, CI/CD, and full cloud infrastructure on AWS — each project automating what the one before it did by hand.
 
