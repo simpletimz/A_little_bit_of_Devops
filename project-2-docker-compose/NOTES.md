@@ -47,7 +47,7 @@ You should log in with no password prompt.
 ## Part B — Install Docker
 ```bash
 sudo apt update
-sudo apt install docker.io -y
+sudo apt install -y docker.io docker-compose-v2
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -aG docker $USER
@@ -68,13 +68,13 @@ cd portfolio-site/project-2-docker-compose
 
 **2. Start everything**
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 This reads `docker-compose.yml` and builds the site's image from `Dockerfile`, pulls Postgres, creates a shared network, creates a storage volume for the database, and starts both containers connected to each other.
 
 **3. Confirm both containers are running**
 ```bash
-docker-compose ps
+docker compose ps
 ```
 Both should show `Up`.
 
@@ -95,8 +95,8 @@ SELECT * FROM test;
 ```
 Then tear down and rebuild the containers, and check the data is still there:
 ```bash
-docker-compose down
-docker-compose up -d
+docker compose down
+docker compose up -d
 docker exec -it portfolio-db psql -U postgres -d portfoliodb -c "SELECT * FROM test;"
 ```
 The row should still be present — the data lives in a Docker volume, independent of the container itself.
