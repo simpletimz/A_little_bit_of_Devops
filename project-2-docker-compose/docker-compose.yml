@@ -13,6 +13,9 @@ services:
     image: postgres:16
     container_name: portfolio-db
     environment:
+    # manage your secrets wisely. Secrets such as postgrespassword should not be plaintext here
+    # you can create a secret file and reference it here
+    # this password is just for testing and practice
       POSTGRES_PASSWORD: changeme123
       POSTGRES_DB: portfoliodb
     volumes:
